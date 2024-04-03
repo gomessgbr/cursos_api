@@ -8,6 +8,6 @@ import java.util.UUID;
 
 
 public interface CourseRepository extends JpaRepository<CourseEntity, UUID> {
-    Optional<CourseEntity> findByNameOrCategory(String name, String category);
+
 
 }
