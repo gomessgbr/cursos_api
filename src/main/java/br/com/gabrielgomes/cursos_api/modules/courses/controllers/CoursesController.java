@@ -3,6 +3,7 @@ package br.com.gabrielgomes.cursos_api.modules.courses.controllers;
 import br.com.gabrielgomes.cursos_api.modules.courses.entities.CourseEntity;
 import br.com.gabrielgomes.cursos_api.modules.courses.useCases.CreateCourseUseCase;
 import br.com.gabrielgomes.cursos_api.modules.courses.useCases.ListCourseUseCase;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
