@@ -3,6 +3,7 @@ package br.com.gabrielgomes.cursos_api.modules.courses.controllers;
 import br.com.gabrielgomes.cursos_api.modules.courses.entities.CourseEntity;
 import br.com.gabrielgomes.cursos_api.modules.courses.useCases.ChangeCourseUseCase;
 import br.com.gabrielgomes.cursos_api.modules.courses.useCases.CreateCourseUseCase;
+import br.com.gabrielgomes.cursos_api.modules.courses.useCases.DeleteCourseUseCase;
 import br.com.gabrielgomes.cursos_api.modules.courses.useCases.ListCourseUseCase;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class CoursesController {
 
     @Autowired
     private ChangeCourseUseCase changeCourseUseCase;
+
+    @Autowired
+    private DeleteCourseUseCase deleteCourseUseCase;
 
         @PostMapping("/")
     public ResponseEntity<Object> create(@Valid @RequestBody CourseEntity courseEntity){
@@ -56,6 +60,22 @@ public class CoursesController {
                 e.printStackTrace();
                 return ResponseEntity.badRequest().body(e.getMessage());
             }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@PathVariable UUID id){
+            try{
+                this.deleteCourseUseCase.execute(id);
+                return ResponseEntity.noContent().build();
+
+
+            }catch(Exception e){
+                e.printStackTrace();
+                return ResponseEntity.badRequest().body(e.getMessage());
+
+
+        }
+
     }
 }
 
